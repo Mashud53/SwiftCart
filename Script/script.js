@@ -8,6 +8,15 @@ const manageSpinner = (status) => {
     }
 
 }
+const showCart =()=>{
+    const cart = JSON.parse(localStorage.getItem("swiftCart"))|| [];
+    console.log(cart.length)
+    const cartBadge = document.getElementById("cart-badge")
+    cartBadge.innerHTML=`
+    <div id="cart-badge" class="badge badge-sm badge-secondary">${cart.length} </div>
+    `
+}
+showCart()
 
 const loadLevel = async () => {
     const url = `https://fakestoreapi.com/products/categories`
@@ -127,6 +136,8 @@ const addToCart = async (id) => {
     swiftCart.push(newCart);
 
     localStorage.setItem("swiftCart", JSON.stringify(swiftCart));
+
+ showCart()
 
 
 }
