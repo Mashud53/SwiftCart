@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftCart</title>
+    <!-- tailwind and daisyui  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <section id="home">
+        <header>
+            <div class="navbar bg-base-100 shadow-sm px-10">
+                <div class="navbar-start">
+
+                    <a class="text-xl font-semibold text-blue-500">SwiftCart</a>
+                </div>
+                <div class="navbar-center hidden lg:flex">
+                    <ul class="menu menu-horizontal px-1">
+                        <li><a href="index.html">Home</a></li>
+                        <li onclick="loadProducts()"><a href="product.html">Products</a></li>
+                        <li><a>About</a></li>
+                        <li><a>Contact</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-end">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </div>
+                        <ul tabindex="-1"
+                            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                            <li><a>Home</a></li>
+                            <li><a>Products</a></li>
+                            <li><a>About</a></li>
+                            <li><a>Contact</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Banner section  -->
+        <section id="banner">
+            <div class="hero min-h-screen" style="background-image: url(./Assets/banner-image.png);">
+                <div class="hero-overlay bg-gradient-to-r from-blue-950/60 to to-blue-200/20"></div>
+                <div class="text-neutral-content">
+                    <div class="max-w-md">
+                        <h1 class="mb-5 text-4xl font-bold">Best Collection For You</h1>
+                        <p class="mb-5">
+                            Discover the latest trends in fashion, electronics, and more. Shop with confidence and style
+                            SwiftCart.
+                        </p>
+                        <button class="btn btn-primary">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Why Coos us section  -->
+        <section class="px-10 mt-20">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold">Why Choose Us</h2>
+                <p class="mt-4 text-gray-500">We provide the best shopping experience with top-notch service</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+
+                <div class="card bg-base-100 card-sm shadow-sm">
+                    <div class="card bg-blue-200 border-2 border-white rounded-lg px-2 py-2 w-10 ml-4 shadow-sm">
+                        <i class="fa-regular fa-truck text-blue-600"></i>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">Fast Delivery</h2>
+                        <p>Get your orders delivered to your doorstep quickly and efficiently.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="card bg-base-100 card-sm shadow-sm">
+                    <div class="card bg-blue-200 border-2 border-white rounded-lg px-2 py-2 w-10 ml-4 shadow-sm">
+                        <i class="fa-regular fa-headphones text-blue-600"></i>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">24/7 Support</h2>
+                        <p>Our support team is available around the clock to assist you.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="card bg-base-100 card-sm shadow-sm">
+                    <div class="card bg-blue-200 border-2 border-white rounded-lg px-2 py-2 w-10 ml-4 shadow-sm">
+                        <i class="fa-solid fa-shield-halved text-blue-600"></i>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">Secure Payment</h2>
+                        <p>Experience safe and secure transactions with our encrypted payment systems.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="card bg-base-100 card-sm shadow-sm">
+                    <div class="card bg-blue-200 border-2 border-white rounded-lg px-2 py-2 w-10 ml-4 shadow-sm">
+                        <i class="fa-solid fa-arrows-rotate text-blue-600"></i>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">Easy Returns</h2>
+                        <p>Not Satisfied? Return your products easily within 30 days.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Trending section  -->
+        <section id="Tranding" class="mt-20 px-10">
+            <h2 class="text-2xl font-bold">Trending Now</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card bg-base-100 w-96 shadow-sm mt-4">
+                    <figure>
+                        <img src="./Assets/trend/2.jpg"
+                            alt="Pant" />
+                    </figure>
+                    <div class="card-body">
+                        <div class="grid grid-cols-3 items-center">
+                            <p class="bg-blue-100 text-blue-600 font-semibold text-xs rounded-lg px-2">Men's Clothing
+                            </p>
+                            <p class="text-right text-xs col-start-3"><i class="fa-solid fa-star text-orange-300"></i>
+                                <span class="text-gray-400 font-medium"> 3.9 (120)</span>
+                            </p>
+                        </div>
+                        <h2 class="card-title">Men's Jeans Pant</h2>
+                        <p class="font-bold">$ 109.59
+                        </p>
+                        <div class="card-actions flex justify-between items-center mt-4">
+                            <button class="border w-2/5 py-2 rounded-lg">
+                                <i class="fa-regular fa-eye"></i>
+                                Details
+                            </button>
+                            <button class="bg-blue-600 w-2/5 py-2 rounded-lg text-white">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-base-100 w-96 shadow-sm mt-4">
+                    <figure>
+                        <img src="./Assets/trend/1.jpg"
+                            alt="bag" />
+                    </figure>
+                    <div class="card-body">
+                        <div class="grid grid-cols-3 items-center">
+                            <p class="bg-blue-100 text-blue-600 font-semibold text-xs rounded-lg px-2">Men's Clothing
+                            </p>
+                            <p class="text-right text-xs col-start-3"><i class="fa-solid fa-star text-orange-300"></i>
+                                <span class="text-gray-400 font-medium"> 3.9 (120)</span>
+                            </p>
+                        </div>
+                        <h2 class="card-title">Bag</h2>
+                        <p class="font-bold">$ 22.00
+                        </p>
+                        <div class="card-actions flex justify-between items-center mt-4">
+                            <button class="border w-2/5 py-2 rounded-lg">
+                                <i class="fa-regular fa-eye"></i>
+                                Details
+                            </button>
+                            <button class="bg-blue-600 w-2/5 py-2 rounded-lg text-white">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-base-100 w-96 shadow-sm mt-4">
+                    <figure>
+                        <img src="./Assets/trend/3.jpg"
+                            alt="Shoes" />
+                    </figure>
+                    <div class="card-body">
+                        <div class="grid grid-cols-3 items-center">
+                            <p class="bg-blue-100 text-blue-600 font-semibold text-xs rounded-lg px-2">Men's Clothing
+                            </p>
+                            <p class="text-right text-xs col-start-3"><i class="fa-solid fa-star text-orange-300"></i>
+                                <span class="text-gray-400 font-medium"> 3.9 (120)</span>
+                            </p>
+                        </div>
+                        <h2 class="card-title">Tea Shirt</h2>
+                        <p class="font-bold">$ 109
+                        </p>
+                        <div class="card-actions flex justify-between items-center mt-4">
+                            <button class="border w-2/5 py-2 rounded-lg">
+                                <i class="fa-regular fa-eye"></i>
+                                Details
+                            </button>
+                            <button class="bg-blue-600 w-2/5 py-2 rounded-lg text-white">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </section>
+    <section class="px-10 mt-20">
+        <footer class="footer bg-neutral-800 text-neutral-content p-10 flex flex-col md:flex-row justify-between  ">
+            <div class="md:max-w-72">
+                <h6 class="text-lg text-blue-400 font-bold">SwiftCart</h6>
+                <p>You one-stop shop for all your fashion and lifestyle needs. Quality products, fast delivery and
+                    excellent
+                    suport</p>
+            </div>
+            <div>
+                <h6 class="footer-title">Quick links</h6>
+                <a class="link link-hover">Home</a>
+                <a class="link link-hover">Products</a>
+                <a class="link link-hover">About</a>
+                <a class="link link-hover">Contact</a>
+            </div>
+            <div>
+                <h6 class="footer-title">support</h6>
+                <a class="link link-hover">FAQ</a>
+                <a class="link link-hover">Shipping</a>
+                <a class="link link-hover">Returns</a>
+                <a class="link link-hover">Privacy Policy</a>
+            </div>
+            <div>
+                <form>
+                    <h6 class="footer-title">subscribe to our Newsletter</h6>
+                    <p class="md:max-w-64 pb-2">The latest news, articles, and resources, sent to your inbox weekly.</p>
+                    <fieldset class="md:w-80">
+
+                        <div class="md:join space-x-2 space-y-2">
+                            <input type="email" placeholder="Enter your email"
+                                class="input input-bordered md:join-item w-full md:w-56 rounded-lg" />
+                            <button class="btn btn-primary rounded-lg w-full md:w-32">Subscribe</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+        </footer>
+        
+        <div class="footer bg-neutral-800 text-neutral-content flex flex-col md:flex-row-reverse items-center justify-center md:justify-between p-10 ">
+
+            <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+                <a>
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a>
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a>
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="">
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+            </nav>
+            <div class="grid-flow-col items-center">
+
+                <p>© 2025 SwiftCart, Inc. All right reserved</p>
+            </div>
+        </div>
+    </section>
+
+
+
+<!-- <script src="./Script/script.js"></script> -->
+
+</body>
+
+</html>
