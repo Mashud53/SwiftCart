@@ -38,7 +38,7 @@ const loadFilterCategory = async (level) => {
     const res = await fetch(url);
     const result = await res.json()
     console.log(result)
-    
+
     if (level == "All") {
         const respones = await fetch("https://fakestoreapi.com/products")
         const allProducts = await respones.json();
@@ -54,10 +54,7 @@ const loadFilterCategory = async (level) => {
 loadLevel()
 
 
-
-
 const displayProducts = (products) => {
-    console.log(products)
     manageSpinner(true);
     const productContainer = document.getElementById("products-container")
 
@@ -67,10 +64,10 @@ const displayProducts = (products) => {
     products.forEach(product => {
         const card = document.createElement("div")
         card.innerHTML = `
-        <div class="card bg-base-100 w-96 shadow-sm mt-4">
+        <div class="card bg-base-100 w-96 shadow-sm mt-4 h-full">
                     <figure>
                         <img src=${product.image}
-                            alt=${product.title} class="w-32"/>
+                            alt=${product.title} class="h-32"/>
                     </figure>
                     <div class="card-body">
                         <div class="grid grid-cols-3 items-center">
@@ -104,8 +101,33 @@ const displayProducts = (products) => {
 
 }
 
-const addToCart = (id) => {
-    console.log(id)
+const addToCart = async (id) => {
+    const res = await fetch(`https://fakestoreapi.com/products/${id}`)
+    const result = await res.json();
+    console.log(result)
+    const newCart = {
+        id: result.id,
+        title: result.title,
+        price: result.price
+    };
+
+
+    let swiftCart = [];
+    const storedCart = localStorage.getItem("swiftCart");
+
+    try {
+        swiftCart = storedCart ? JSON.parse(storedCart) : [];
+
+        if (!Array.isArray(swiftCart)) swiftCart = [];
+    } catch (error) {
+
+        swiftCart = [];
+    }
+
+    swiftCart.push(newCart);
+
+    localStorage.setItem("swiftCart", JSON.stringify(swiftCart));
+
 
 }
 
