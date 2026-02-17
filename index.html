@@ -32,7 +32,8 @@
                     </ul>
                 </div>
                 <div class="navbar-end">
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i onclick="my_modal_3.showModal()" class="fa-solid fa-cart-shopping"></i>
+                    <div id="cart-badge"> </div>
                     <div class="dropdown">
                         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -43,8 +44,8 @@
                         </div>
                         <ul tabindex="-1"
                             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <li><a>Home</a></li>
-                            <li><a>Products</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li onclick="loadProducts()"><a href="product.html">Products</a></li>
                             <li><a>About</a></li>
                             <li><a>Contact</a></li>
 
@@ -129,8 +130,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="card bg-base-100 w-96 shadow-sm mt-4">
                     <figure>
-                        <img src="./Assets/trend/2.jpg"
-                            alt="Pant" />
+                        <img src="./Assets/trend/2.jpg" alt="Pant" />
                     </figure>
                     <div class="card-body">
                         <div class="grid grid-cols-3 items-center">
@@ -157,8 +157,7 @@
                 </div>
                 <div class="card bg-base-100 w-96 shadow-sm mt-4">
                     <figure>
-                        <img src="./Assets/trend/1.jpg"
-                            alt="bag" />
+                        <img src="./Assets/trend/1.jpg" alt="bag" />
                     </figure>
                     <div class="card-body">
                         <div class="grid grid-cols-3 items-center">
@@ -185,8 +184,7 @@
                 </div>
                 <div class="card bg-base-100 w-96 shadow-sm mt-4">
                     <figure>
-                        <img src="./Assets/trend/3.jpg"
-                            alt="Shoes" />
+                        <img src="./Assets/trend/3.jpg" alt="Shoes" />
                     </figure>
                     <div class="card-body">
                         <div class="grid grid-cols-3 items-center">
@@ -254,8 +252,9 @@
             </div>
 
         </footer>
-        
-        <div class="footer bg-neutral-800 text-neutral-content flex flex-col md:flex-row-reverse items-center justify-center md:justify-between p-10 ">
+
+        <div
+            class="footer bg-neutral-800 text-neutral-content flex flex-col md:flex-row-reverse items-center justify-center md:justify-between p-10 ">
 
             <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
                 <a>
@@ -280,10 +279,24 @@
             </div>
         </div>
     </section>
+    <!-- <button class="btn" onclick="my_modal_3.showModal()">open modal</button> -->
+    <dialog id="my_modal_3" class="modal">
+
+        <div class="modal-box">
+            <div id="cart-products">
+
+            </div>
+            <!-- <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="text-lg font-bold">Hello!</h3>
+            <p class="py-4">Press ESC key or click on ✕ button to close</p> -->
+        </div>
+    </dialog>
 
 
 
-<!-- <script src="./Script/script.js"></script> -->
+    <script src="./Script/script.js"></script>
 
 </body>
 

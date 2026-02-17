@@ -1,4 +1,5 @@
 const manageSpinner = (status) => {
+    document.getElementById("spinner").classList.remove("hidden");
     if (status == true) {
         document.getElementById("spinner").classList.remove("hidden");
         document.getElementById("products-container").classList.add("hidden");
@@ -8,27 +9,25 @@ const manageSpinner = (status) => {
     }
 
 }
-const showCart =()=>{
-    const cart = JSON.parse(localStorage.getItem("swiftCart"))|| [];
+
+// cartItems()
+
+const showCart = () => {
+    const cart = JSON.parse(localStorage.getItem("swiftCart")) || [];
     console.log(cart.length)
     const cartBadge = document.getElementById("cart-badge")
-    cartBadge.innerHTML=`
+    cartBadge.innerHTML = `
     <div id="cart-badge" class="badge badge-sm badge-secondary">${cart.length} </div>
     `
+    // cartItems(cart)
 }
 showCart()
 
-const loadLevel = async () => {
-    const url = `https://fakestoreapi.com/products/categories`
-    const res = await fetch(url)
-    const result = await res.json()
-    const levels = ["All", ...result]
-    displayLevel(levels)
-}
+
 
 const displayLevel = (levels) => {
     const levelContainer = document.getElementById("level-container")
-    levelContainer.innerHTML = ""
+    levelContainer.innerHTML = " "
     levels.forEach(level => {
         const button = document.createElement("button");
         button.textContent = level;
@@ -41,6 +40,16 @@ const displayLevel = (levels) => {
     })
 
 }
+
+const loadLevel = async () => {
+    const url = `https://fakestoreapi.com/products/categories`
+    const res = await fetch(url)
+    const result = await res.json()
+    const levels = ["All", ...result]
+    displayLevel(levels)
+}
+
+
 const loadFilterCategory = async (level) => {
     console.log(level)
     const url = `https://fakestoreapi.com/products/category/${level}`;
@@ -68,12 +77,12 @@ const displayProducts = (products) => {
     const productContainer = document.getElementById("products-container")
 
 
-    productContainer.innerHTML = "";
+    productContainer.innerHTML = " ";
 
     products.forEach(product => {
         const card = document.createElement("div")
         card.innerHTML = `
-        <div class="card bg-base-100 w-96 shadow-sm mt-4 h-full">
+        <div class="card bg-base-100 w-96 shadow-sm mt-4 h-full mx-auto">
                     <figure>
                         <img src=${product.image}
                             alt=${product.title} class="h-32"/>
@@ -137,7 +146,7 @@ const addToCart = async (id) => {
 
     localStorage.setItem("swiftCart", JSON.stringify(swiftCart));
 
- showCart()
+    showCart()
 
 
 }
@@ -152,6 +161,66 @@ const loadProducts = async () => {
 }
 
 loadProducts()
+
+const cartItems = () => {
+    const cart = JSON.parse(localStorage.getItem("swiftCart")) || [];
+    console.log(cart)
+    const cartItem = document.getElementById("cart-products")
+
+    if (cart.length == 0) {
+        cartItem.innerHTML = `
+        <div>
+        <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+        <h2>Your card is Empty</h2>
+        </div>
+        `
+        return;
+    }
+
+    cart.map((item, i) => {
+        console.log(item)
+        cartItem.innerHTML =" "
+        const div = document.createElement("div")
+        div.innerHTML = `
+    <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            
+            <div class="overflow-x-auto mt-4">
+  <table class="table">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Price</th>        
+      </tr>
+    </thead>
+    <tbody>
+      <!-- row 1 -->
+      <tr>
+        <th>${i+1}</th>
+        <td>${item?.title}</td>
+        <td>${item?.price}</td>
+        
+      </tr>
+      
+      
+    </tbody>
+  </table>
+</div>
+            
+    `;
+        cartItem.appendChild(div)
+
+    })
+
+
+}
+
+cartItems()
 
 
 

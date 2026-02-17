@@ -33,7 +33,7 @@
                 </ul>
             </div>
             <div class="navbar-end">
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i onclick="my_modal_3.showModal()" class="fa-solid fa-cart-shopping"></i>
                 <div id="cart-badge"> </div>
                 <div class="dropdown">
                     <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -65,7 +65,7 @@
         <div id="spinner" class="text-center">
             <span class="loading loading-bars loading-xl"></span>
         </div>
-        <div id="products-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div id="products-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto">
 
         </div>
 
@@ -108,6 +108,9 @@
             </div>
 
         </footer>
+        <div class="mx-8 border-b md:mx-10 border-gray-600">
+
+        </div>
 
         <div
             class="footer bg-neutral-800 text-neutral-content flex flex-col md:flex-row-reverse items-center justify-center md:justify-between p-10 ">
@@ -135,6 +138,20 @@
             </div>
         </div>
     </section>
+    <!-- <button class="btn" onclick="my_modal_3.showModal()">open modal</button> -->
+    <dialog id="my_modal_3" class="modal">
+
+        <div class="modal-box h-full">
+            <div id="cart-products" class="">
+
+            </div>
+            <!-- <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            <h3 class="text-lg font-bold">Hello!</h3>
+            <p class="py-4">Press ESC key or click on ✕ button to close</p> -->
+        </div>
+    </dialog>
 
     <script src="./Script/script.js"></script>
 
