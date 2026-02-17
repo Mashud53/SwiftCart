@@ -147,6 +147,7 @@ const addToCart = async (id) => {
     localStorage.setItem("swiftCart", JSON.stringify(swiftCart));
 
     showCart()
+    cartItems()
 
 
 }
@@ -183,7 +184,7 @@ const cartItems = async () => {
     const totalPrice = cart.reduce((total, item) => {
         return total + (item.price)
     }, 0);
-    console.log(totalPrice)
+    
 
     let tableHTML = `
          <form method="dialog">
