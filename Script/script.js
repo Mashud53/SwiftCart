@@ -162,10 +162,11 @@ const loadProducts = async () => {
 
 loadProducts()
 
-const cartItems = () => {
-    const cart = JSON.parse(localStorage.getItem("swiftCart")) || [];
+const cartItems = async () => {
+    const cart = await JSON.parse(localStorage.getItem("swiftCart")) || [];
     console.log(cart)
     const cartItem = document.getElementById("cart-products")
+    cartItem.innerHTML = " "
 
     if (cart.length == 0) {
         cartItem.innerHTML = `
@@ -173,50 +174,60 @@ const cartItems = () => {
         <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
-        <h2>Your card is Empty</h2>
+        <h2>Your cart is Empty</h2>
         </div>
         `
         return;
     }
 
-    cart.map((item, i) => {
-        console.log(item)
-        cartItem.innerHTML =" "
-        const div = document.createElement("div")
-        div.innerHTML = `
-    <form method="dialog">
+    const totalPrice = cart.reduce((total, item) => {
+        return total + (item.price)
+    }, 0);
+    console.log(totalPrice)
+
+    let tableHTML = `
+         <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
-            
             <div class="overflow-x-auto mt-4">
-  <table class="table">
-    <!-- head -->
-    <thead>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Price</th>        
-      </tr>
-    </thead>
-    <tbody>
-      <!-- row 1 -->
-      <tr>
-        <th>${i+1}</th>
-        <td>${item?.title}</td>
-        <td>${item?.price}</td>
-        
-      </tr>
-      
-      
-    </tbody>
-  </table>
-</div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
             
-    `;
-        cartItem.appendChild(div)
+         `
 
-    })
+    cart.forEach((item, i) => {
 
+        tableHTML += `
+       <tr>
+                <th>${i + 1}</th>
+                <td>${item.title}</td>
+                <td>${item.price}</td>
+            </tr>
+      `
+
+    });
+
+    tableHTML += `
+    </tbody>
+
+        <tfoot>
+                <tr class="font-bold">
+                    <td colspan="2" class="text-right">Total</td>
+                    <td>${totalPrice}</td>
+                </tr>
+            </tfoot>
+
+        </table>
+    </div>
+    `
+cartItem.innerHTML=tableHTML
 
 }
 
